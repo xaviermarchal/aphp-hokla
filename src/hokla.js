@@ -15,6 +15,7 @@ class Inventory {
       if (this.drugs[i].name !== "Old bottle of wine") {
         if (this.drugs[i].efficiency > 0) {
           if (this.drugs[i].name !== "Granny recipe") {
+            // start insulin vial
             if (this.drugs[i].name === "Insulin vial") {
               this.drugs[i].efficiency = this.drugs[i].efficiency - 1;
               if (this.drugs[i].useBefore < 31) {
@@ -27,7 +28,9 @@ class Inventory {
                   this.drugs[i].efficiency = this.drugs[i].efficiency - 1;
                 }
               }
+              // end insulin vial
             } else {
+              // toutes les autres drogues normales perdent en efficiency - 1
               this.drugs[i].efficiency = this.drugs[i].efficiency - 1;
             }
           }
@@ -40,11 +43,13 @@ class Inventory {
       if (this.drugs[i].name !== "Granny recipe") {
         this.drugs[i].useBefore = this.drugs[i].useBefore - 1;
       }
+      // useBefore < 0
       if (this.drugs[i].useBefore < 0) {
         if (this.drugs[i].name !== "Old bottle of wine") {
           if (this.drugs[i].name !== "Insulin vial") {
             if (this.drugs[i].efficiency > 0) {
               if (this.drugs[i].name !== "Granny recipe") {
+                // toutes les autres drogues normales perdent en efficiency - 1
                 this.drugs[i].efficiency = this.drugs[i].efficiency - 1;
               }
             }
